@@ -1,0 +1,17 @@
+// Bootstrap
+$bootstrap-sass-asset-helper :true;
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/css-spaces/source/spaces.scss";
+
+.thumbnail img {
+  max-height: 200px;
+}
+
+.thumbnail .description {
+  color: #7d7878;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 1.5rem;
+}

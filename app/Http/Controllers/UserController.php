@@ -25,10 +25,11 @@ class UserController extends Controller
         return view('user.profile');
     }
 
-    public function getLogout()
+    public function getLogout(Request $request)
     {
-       Auth::logout();
-       return redirect()->back();
+        $request->session()->forget('cart');
+        Auth::logout();
+        return redirect()->back();
     }
 
     public function postSignup(Request $request)
@@ -57,7 +58,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-            return redirect()->route('product.index');
+            return redirect()->back();
         }
         return redirect()->back();
     }

@@ -25,6 +25,12 @@ class UserController extends Controller
         return view('user.profile');
     }
 
+    public function getLogout()
+    {
+       Auth::logout();
+       return redirect()->back();
+    }
+
     public function postSignup(Request $request)
     {
         $this->validate($request, [
@@ -38,7 +44,9 @@ class UserController extends Controller
         ]);
         $user->save();
 
-        return redirect()->route('product.index');
+        Auth::login($user);
+
+        return redirect()->route('user.profile');
     }
 
     public function postSignin(Request $request)
@@ -49,7 +57,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-            return redirect()->route('user.profile');
+            return redirect()->route('product.index');
         }
         return redirect()->back();
     }

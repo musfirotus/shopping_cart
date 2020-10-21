@@ -11,7 +11,7 @@
               <li class="list-group-item">
                   <span class="badge">{{ $product['qty'] }}</span>
                   <strong>{{ $product['item']['title'] }}</strong>
-                  <span class="label label-success">{{ $product['price'] }}</span>
+                  <span class="label label-success">@currency($product['price'])</span>
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
                       Action
@@ -29,7 +29,7 @@
     </div>
     <div class="row">
       <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <strong>Total: {{ $totalPrice }}</strong>
+        <strong>Total: @currency($totalPrice)</strong>
       </div>
     </div>
     <hr>
